@@ -54,7 +54,7 @@ public class ObjectsPart extends AbstractObjectsPart{
 	@SuppressWarnings("all")
 	private IObservableList<Agent> agentListObservable = EMFProperties.list(DatamodelPackage.Literals.SCENARIO__FORKLIFTS).observeDetail(scenarioObservable);
 	
-		@Override
+	@Override
 	protected List<ObjectsPage<? extends EObject>> getObjectsPages() {
 		eventBroker.subscribe(Topics.NEW_SCENARIO, event -> scenarioObservable.setValue(appData.getScenario()));		
 		List<ObjectsPage<? extends EObject>> pages = new ArrayList<ObjectsPage<? extends EObject>>();
@@ -87,9 +87,6 @@ public class ObjectsPart extends AbstractObjectsPart{
 									.feature(DatamodelPackage.Literals.NODE__NAME)
 									.strategy(UpdateValueStrategyFactory.stringIsNotEmpty())
 									.build();
-
-
-
 					tableView	.column(Node::getX)
 								.name(messages.obj_NODE_col_X)
 								.width(100)
@@ -110,7 +107,7 @@ public class ObjectsPart extends AbstractObjectsPart{
 							() -> scenarioObservable.getValue(),
 							EMFExcelDataTransform.getExcelTransform(),
 							() -> commandFactory.getCrossReferenceAdapter());
-					tableView.getEditingInExcelManager().setAdditionalActionBeforeRemove(this::beforeRemoveNodes);
+					//tableView.getEditingInExcelManager().setAdditionalActionBeforeRemove(this::beforeRemoveNodes);
 				});
 	}
 
